@@ -39,6 +39,7 @@
                                         @method('DELETE')     
                                         <input type="submit" value="Eliminar" class="btn btn-sm btn-danger" 
                                         onClick="return confirm('Desea Eliminar?')"/>
+                                    </form>
                                     </td>
 
                                 </tr>

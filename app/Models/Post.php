@@ -32,7 +32,15 @@ class Post extends Model
 
     public function getGetExcerptAttribute() {
         return substr($this->body, 0, 140);
-     }
+    }
+
+    public function getGetImageAttribute() {
+        if ($this->image){
+            return url("storage/$this->image");
+        }
+        
+        return substr($this->body, 0, 140);
+    }
 
      protected $fillable = ['user_id', 'title', 'body', 'image', 'iframe'];
 }

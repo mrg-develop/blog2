@@ -85,7 +85,9 @@ class PostController extends Controller
     {
         $post->update($request->all());
         if ($request->file('file')) {
-            Storage::disk('public')->delete($post->image);
+            if ($post->image != null) {
+                Storage::disk('public')->delete($post->image);
+            }
             $post->image = $request->file('file')->store('posts', 'public');
             $post->save();
 
@@ -102,7 +104,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        Storage::disk('public')->delete($post->image);
+        //dd($post);
+        if ($post->image != null){
+            Storage::disk('public')->delete($post->image);
+        }
         $post->delete();
         return back()->with('status', 'eliminado con éxito');
     }
