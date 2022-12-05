@@ -23,6 +23,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Titulo</th>
+                                <th>Imagen</th>
                                 <th colspan='2'>&nbsp;</th>
                             </tr>
                         <tbody>
@@ -30,6 +31,16 @@
                                 <tr>
                                     <td> {{ $post->id }} </td>
                                     <td> {{ $post->title }} </td>
+                                    <td>
+                                    @if ($post->image)
+                                        <img src="{{ $post->get_image }}" class="card-img-top" />
+                                    @elseif ($post->iframe)
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        {!! $post->iframe !!}
+                                    </div>
+                                    @endif
+
+                                    </td>
                                     <td>
                                         <a href="{{ route('posts.edit', $post) }}" class='btn btn-primary btn-sm'>Editar</a>
                                     </td>
